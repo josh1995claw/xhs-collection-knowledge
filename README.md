@@ -78,6 +78,37 @@ python3 kb.py score      # 效果评分
 - 点点单条回复上限约 2 篇；单次导入上限约 18 篇（上下文窗口），超出分批新建会话
 - 小红书 UI 会改版，选择器失效时见 SKILL.md 故障排查表
 
+## 克隆与双平台同步
+
+本技能已发布到两个平台，可任选其一克隆：
+
+```bash
+# GitHub（主仓库）
+git clone git@github.com:josh1995claw/xhs-collection-knowledge.git
+# 或 Gitee（国内镜像）
+git clone git@gitee.com:djhjoshuadu/xhs-collection-knowledge.git
+```
+
+克隆后得到完整技能包：`SKILL.md` / `README.md` / `references/` / `scripts/` / `LICENSE`。
+
+### 双平台同步（开发者视角）
+
+仓库已配置两个 remote：
+
+| remote | 平台 | 地址 |
+|---|---|---|
+| `origin` | GitHub（主） | `git@github.com:josh1995claw/xhs-collection-knowledge.git` |
+| `gitee` | Gitee（镜像） | `git@gitee.com:djhjoshuadu/xhs-collection-knowledge.git` |
+
+日常推送：
+
+```bash
+git push origin main   # 推 GitHub（主）
+git push gitee main    # 推 Gitee（镜像）
+```
+
+> 使用 SSH 需将本机公钥（`~/.ssh/id_ed25519_eink.pub`）分别加入 GitHub 与 Gitee 的 SSH 设置；本机 `~/.ssh/config` 已将 `github.com` 与 `gitee.com` 映射到该密钥。
+
 ## License
 
 MIT License — 见 [LICENSE](./LICENSE)。
