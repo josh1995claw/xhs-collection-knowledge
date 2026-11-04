@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Node
+node_modules/
+
+# macOS
+.DS_Store
+
+# 本地知识库数据（不随技能包公开）
+raw/
+index/
+cards/
+knowledge/
+logs/
+secrets/
