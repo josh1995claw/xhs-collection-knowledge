@@ -115,8 +115,16 @@ async function openFavorites(ctx) {
   await click(ctx, plus.x, plus.y);
   await sleep(1500);
 
-  const fav = await findTextPoint(ctx, '我的收藏');
-  if (!fav) throw new Error('未找到「我的收藏」菜单项');
+  // 2026-11-21 UI 再改版：+ 菜单由「我的收藏」变为「上传图片/上传笔记」。
+  // 新旧路径都兼容：优先「我的收藏」，找不到就点「上传笔记」。
+  let fav = await findTextPoint(ctx, '我的收藏');
+  if (fav) {
+    log('走旧路径：我的收藏');
+  } else {
+    fav = await findTextPoint(ctx, '上传笔记');
+    if (!fav) throw new Error('未找到「我的收藏」或「上传笔记」菜单项（点点 UI 可能又改版）');
+    log('走新路径：上传笔记（2026-11-21 UI 改版）');
+  }
   await click(ctx, fav.x, fav.y);
   await sleep(2500);
   log('已打开收藏面板');
